@@ -1,5 +1,5 @@
 <?php
-require_once "./TableIndex.php";
+require_once "./Table.php";
 $user = "";
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -10,6 +10,9 @@ if (!isset($_SESSION['name']) || empty($_SESSION['name'])) {
 } else {
     $user = 'You are logged as ' . $_SESSION['name'];
     $admin= $_SESSION['admin'];
+}
+if(isset($_GET["search"])) {
+    $searchTitle = $_GET["search"];
 }
 ?>
 <!DOCTYPE html>
@@ -83,8 +86,8 @@ CODE;
 
 
              <li class="nav-item">
-                 <form class="form-inline" action="./SearchResult.html">
-                     <input type="text" class="form-control" name="search">
+                 <form class="form-inline" action="./SearchResult.php">
+                     <input type="text" class="form-control" name="search" placeholder="Search by title">
                      <input type="submit" class="btn btn-primary" value="Search">
                  </form>
              </li>
@@ -104,41 +107,32 @@ CODE;
          </ul>
         <h2>Search Result</h2>
  <!-- --------------------------- TABLE ----------------------------------- -->     
-          <br/>          
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Cover</th>
-                  <th>Title</th>
-                  <th>Editorial</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td></td>
-                    <td>Title book 1</td>
-                    <td>Editorial 1</td>
-                    <td><a href="BookPage.php" class="btn btn-primary">More info</a></td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td></td>
-                    <td>Title Book 2</td>
-                    <td>Editorial 2</td>
-                    <td><a href="BookPage.php" class="btn btn-primary">More info</a></td>
-                </tr>
-                <tr>
-                     <th scope="row">1</th>
-                    <td></td>
-                    <td>Title Book 3</td>
-                    <td>Editorial 3</td>
-                    <td><a href="BookPage.php" class="btn btn-primary">More info</a></td>
-                </tr>
-              </tbody>
-            </table>
+          <br/>
+         <?php
+
+         // preparing variables to create my Table
+         $dbName = "library_db";
+         $tableName = "book";
+
+         // name of fields
+         $fields [] = "Title";
+         $fields [] = "ISBN";
+         $fields [] = "Editorial";
+         $fields [] = "Category";
+         $fields [] = "EditionYear";
+
+         // files where to jump to Browse, Edit, Delete the selected row.
+         // id given as GET in link is first given field.
+
+         $fileBrowse = "BookPage.php";
+         $fileUpdate = "";
+         $fileDelete = "";
+
+         $t = new Table($dbName, $tableName, $fields, $fileBrowse, $fileUpdate, $fileDelete,$searchTitle);
+         $t->paintTable();
+
+         // ------------------------------------------------------------------------------------
+         ?>
             
 
             <br/>

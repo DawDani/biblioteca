@@ -108,7 +108,7 @@ CODE;
 
             <li class="nav-item">
                 <form class="form-inline" action="SearchResult.php">
-                    <input type="text" class="form-control" name="search">
+                    <input type="text" class="form-control" name="search" placeholder="Search by title">
                     <input type="submit" class= "btn btn-primary" value="Search">
                 </form>
             </li>
@@ -141,13 +141,14 @@ CODE;
             <p>Category: <?php echo $categoryBook ?></p>
 
             <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                  Reserve Book
-                </button>
-            <br/>
-            <br/>
+
         <?php
-            if($user==""){
+            if($user===""){
+                echo <<<CODE
+                 <a class="btn btn-primary" href="LogIn.php">
+                  Log in to reserve a book
+                </a>
+CODE;
 
             }elseif($admin==1 | $admin==2){
                 echo <<<CODE
@@ -156,6 +157,13 @@ CODE;
                         <a href="addCopy.php?isbn=$isbnBook"><img alt="add new copy" src="img/add_blue.png" width="70" /></a>
                         <a href="deleteBook.php?isbn=$isbnBook"><img alt="delete icon" src="img/remove_icon.png" width="70"/></a>
                     </div>
+CODE;
+            }
+            if(!empty($user)){
+                echo <<<CODE
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    Reserve Book
+                </button>
 CODE;
             }
         ?>

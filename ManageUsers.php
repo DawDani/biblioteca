@@ -86,7 +86,7 @@ CODE;
 
             <li class="nav-item">
                 <form class="form-inline" action="SearchResult.php">
-                    <input type="text" class="form-control" name="search">
+                    <input type="text" class="form-control" name="search" placeholder="Search by title">
                     <input type="submit" class= "btn btn-primary" value="Search">
                 </form>
             </li>

@@ -15,13 +15,13 @@ class table
 	protected $registers;
 	protected $color;
 	protected $fileBrowse, $fileUpdate, $fileDelete;
-	private $opcio;
+	private $search;
 
-		function __construct($dbName,$tableName,$fieldList,$fileBrowse= "",$fileUpdate = "",$fileDelete= "", $opcio=0)
+		function __construct($dbName, $tableName, $fieldList, $fileBrowse= "", $fileUpdate = "", $fileDelete= "", $search="")
 		{
 		$this->dbName    = $dbName;
 		$this->tableName = $tableName;
-		$this->opcio 	 = $opcio;
+		$this->search 	 = $search;
 		
 		
 		$this->fieldNum = count($fieldList);
@@ -100,9 +100,12 @@ public function paintTable()
         }else{
             $sentenciaSQL .= $this->fieldList[$this->fieldNum - 1] . " from " . $this->tableName;
         }
+        if($this->search != "" ){
+            $sentenciaSQL .= " where Title LIKE '%".$this->search."%'";
+        }
 
 		
-		// echo $sentenciaSQL;
+		 //echo $sentenciaSQL;
 
 		
 		$this->registers = $this->mysqli->query ($sentenciaSQL);

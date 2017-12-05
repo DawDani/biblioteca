@@ -29,7 +29,7 @@ if(isset($_GET["search"])) {
     <body>
          <!-- --------------------------- BODY ----------------------------------- --> 
         <div>
-            <a href="Index.php" style="text-decoration: none;"> <h1><img alt="logo" src="img/logo.jpg" width=135/>Library</h1> </a>
+            <h1><a href="Index.php" style="text-decoration: none;"><img alt="logo" src="img/logo.jpg" width=135/>Library</a></h1>
         </div>
 
         

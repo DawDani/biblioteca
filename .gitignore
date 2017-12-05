@@ -1,0 +1,6 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea/
+fonts/
+mix-manifest.json
+node_modules/
+/datos_conexion.inc

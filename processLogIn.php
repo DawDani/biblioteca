@@ -2,16 +2,16 @@
 <?php
     include ("datos_conexion.inc");
     //connecting to BD
-    $connexion = new mysqli ($mysql_server,$mysql_login,$mysql_pass,"library_db");
-    if ($connexion->connect_errno) {
-        echo "Failed to connect to MySQL: " . $mysqli->connect_error;
+    $connection = new mysqli(DB_HOST, DB_USER, DB_PASS, "library_db");
+    if ($connection->connect_errno) {
+        echo "Failed to connect to MySQL: " . $connection->connect_error;
         die();
     }
 
     $FormEmail = $_POST['InputEmail1'];
     $FormPass = $_POST['InputPassword1'];
     $SentenceSQL= "SELECT Password,Id,Name,Admin FROM user WHERE Email = '" . $FormEmail . "' ;";
-    $registers = $connexion->query($SentenceSQL);
+    $registers = $connection->query($SentenceSQL);
     // painting header and showing results
 
     //Makes the login 
@@ -24,12 +24,12 @@
             session_start();
             $_SESSION['name']=$UserName;
             $_SESSION['admin']=$UserAdmin;
-            header("Location: Index.php");
+            header("Location: index.php");
         }else{
-            header("Location: LogIn.php");
+            header("Location: logIn.php");
         }
     }else{
-        header("Location: LogIn.php");
+        header("Location: logIn.php");
     }
 
 

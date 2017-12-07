@@ -6,7 +6,7 @@ if (session_status() == PHP_SESSION_NONE) {
     }
     session_destroy();
     session_unset();
-    header("Location: Index.php");
+    header("Location: index.php");
 }
 
 ?>

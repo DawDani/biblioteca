@@ -7,7 +7,7 @@ if (!isset($_SESSION['name']) || empty($_SESSION['name'])) {
     session_unset();
 
 } else {
-    header("Location: Index.php");
+    header("Location: index.php");
 }
 ?>
 
@@ -25,7 +25,7 @@ if (!isset($_SESSION['name']) || empty($_SESSION['name'])) {
     <body>
         <div class="container">
             <h1>Create your new account</h1>
-            <form method="post" action="ProcessRegister.php">
+            <form method="post" action="processRegister.php">
             <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="inputName" class="col-form-label">Name</label>
@@ -72,7 +72,7 @@ if (!isset($_SESSION['name']) || empty($_SESSION['name'])) {
               <button type="submit" class="btn btn-primary">Sign in</button>
             </form>
             <br/>
-            <a href="Index.php">Home Page</a>
+            <a href="index.php">Home Page</a>
             <br/>
             <br/>
             <hr/>

@@ -1,7 +1,6 @@
 
 <?php
 //datos_conexion.inc
-$mysql_server = "localhost";
-$mysql_login = "root";
-$mysql_pass = "";
-?>
+const DB_HOST = "localhost";
+const DB_USER = "root";
+const DB_PASS = "9462";

@@ -7,13 +7,14 @@ if (session_status() == PHP_SESSION_NONE) {
 if (!isset($_SESSION['name']) || empty($_SESSION['name'])) {
     session_destroy();
     session_unset();
-    header("Location: Index.php");
+    header("Location: index.php");
 } else {
     $user = 'Hola ' . $_SESSION['name'];
     $admin= $_SESSION['admin'];
 }
-if($_SESSION['admin'] === "0" ){
-    header("Location: Index.php");
+
+if($_SESSION['admin'] === "0" || $_SESSION['admin'] === "1"){
+    header("Location: index.php");
 }
 ?>
 <!DOCTYPE html>
@@ -31,7 +32,7 @@ if($_SESSION['admin'] === "0" ){
          <!-- --------------------------- BODY ----------------------------------- -->           
  
         <div>
-            <h1><a href="Index.php" style="text-decoration: none;"><img alt="logo" src="img/logo.jpg" width=135/>Library</a></h1>
+            <h1><a href="index.php" style="text-decoration: none;"><img alt="logo" src="img/logo.jpg" width=135/>Library</a></h1>
         </div>
 
         
@@ -41,20 +42,20 @@ if($_SESSION['admin'] === "0" ){
             if ($user == '') {
                 echo <<<CODE
                 <li class="nav-item">
-                     <a class="nav-link active" href="LogIn.php">Log In</a>
+                     <a class="nav-link active" href="logIn.php">Log In</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Register.php">Register</a>
+                    <a class="nav-link" href="register.php">Register</a>
                 </li>
 CODE;
             }elseif($admin==1) { //Si es admin lvl 1 (bibliotecario/a) solo puede gestionar libros
                 echo <<<CODE
                <li class="nav-item">
-                     <a class="nav-link active" href="LogOut.php">Log Out</a>
+                     <a class="nav-link active" href="logOut.php">Log Out</a>
                 </li>
                 
                 <li class="nav-item">
-                    <a class="nav-link" href="./ManageBooks.php">Manage Books</a>
+                    <a class="nav-link" href="manageBooks.php">Manage Books</a>
                 </li>
         
 CODE;
@@ -62,21 +63,21 @@ CODE;
                 echo <<<CODE
                 
                <li class="nav-item">
-                     <a class="nav-link active" href="LogOut.php">Log Out</a>
+                     <a class="nav-link active" href="logOut.php">Log Out</a>
                 </li>
                 
                 <li class="nav-item">
-                    <a class="nav-link" href="./ManageBooks.php">Manage Books</a>
+                    <a class="nav-link" href="manageBooks.php">Manage Books</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./ManageUsers.php">Manage Users</a>
+                 <li class="nav-item">
+                    <a class="nav-link" href="manageUsers.php">Manage Users</a>
                 </li>
                 
 CODE;
             }else{
                 echo <<<CODE
             <li class="nav-item">
-                <a class="nav-link active" href="LogOut.php">Log Out</a>
+                <a class="nav-link active" href="logOut.php">Log Out</a>
             </li>
 CODE;
             }
@@ -84,7 +85,7 @@ CODE;
             ?>
 
             <li class="nav-item">
-                <form class="form-inline" action="SearchResult.php">
+                <form class="form-inline" action="searchResult.php">
                     <input type="text" class="form-control" name="search" placeholder="Search by title">
                     <input type="submit" class= "btn btn-primary" value="Search">
                 </form>
@@ -95,7 +96,7 @@ CODE;
                     Categories
                   </button>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="SearchResult.php">Action</a>
+                    <a class="dropdown-item" href="searchResult.php">Action</a>
                     <a class="dropdown-item" href="#">Another action</a>
                     <a class="dropdown-item" href="#">Something else here</a>
                   </div>
@@ -106,38 +107,34 @@ CODE;
          <br/>
          <br/>
          <div>
-            <h2 style="text-align: center;">Manage Books</h2>
+            <h2 style="text-align: center;">Manage Users</h2>
         <br/>
             <?php
             // preparing variables to create my Table
             $dbName = "library_db";
-            $tableName = "copy, book";
+            $tableName = "user";
 
             // name of fields
-            $fields [] = "id";
-            $fields []= "ISBN";
-            $fields [] = "Title";
-            $fields [] = "BookCondition";
+            $fields [] = "Id";
+            $fields [] = "Username";
+            $fields [] = "Email";
+            $fields [] = "Admin";
 
             // files where to jump to Browse, Edit, Delete the selected row.
             // id given as GET in link is first given field.
-
-            $fileBrowse = "BookPage.php";
-            $fileUpdate = "editCopy.php";
-            $fileDelete = "deleteCopy.php";
+            //$fileBrowse = "browse.php";
+            $fileBrowse = "";
+            $fileUpdate = "editUser.php";
+            $fileDelete = "deleteUser.php";
 
             $t = new Table($dbName, $tableName, $fields, $fileBrowse, $fileUpdate, $fileDelete);
             $t->paintTable();
 
             // ------------------------------------------------------------------------------------
             ?>
-            <div >
-                <a href="NewBookForm.php"> <img alt="new_book_icon" src="img/new_book_icon.png" width="60"/></a>
-                
-            </div>       
             <br/>
             <br/>
-            <a href="Index.php">Home Page</a>
+            <a href="index.php">Home Page</a>
         <br/>
         <br/>
         <hr/>

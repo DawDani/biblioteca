@@ -6,7 +6,7 @@ if (session_status() == PHP_SESSION_NONE) {
 if (!isset($_SESSION['name']) || empty($_SESSION['name'])) {
     session_destroy();
     session_unset();
-    header("Location: Index.php");
+    header("Location: index.php");
 } else {
     $user = 'Hola ' . $_SESSION['name'];
     $admin= $_SESSION['admin'];
@@ -27,7 +27,7 @@ if (!isset($_SESSION['name']) || empty($_SESSION['name'])) {
         <p>Are you sure to delete this book and its copies?</p>
         <form method="post">
             <input type="submit" class="btn btn-success" id="yes" name="yes" value="Yes"/>
-            <a role="button" class="btn btn-danger" href="BookPage.php?isbn=<?php echo $_GET["isbn"]?>">No</a>
+            <a role="button" class="btn btn-danger" href="bookPage.php?isbn=<?php echo $_GET[">No</a>
         </form>
         <?php
 
@@ -37,7 +37,7 @@ if (!isset($_SESSION['name']) || empty($_SESSION['name'])) {
             if(isset($_POST["yes"])){
                 include ("datos_conexion.inc");
                 //connecting to BD
-                $connexion = new mysqli ($mysql_server,$mysql_login,$mysql_pass,"library_db");
+                $connexion = new mysqli ($mysql_server,DB_USER,DB_PASS,"library_db");
                 if ($connexion->connect_errno) {
                     echo "Failed to connect to MySQL: " . $mysqli->connect_error;
                     die();
@@ -47,7 +47,7 @@ if (!isset($_SESSION['name']) || empty($_SESSION['name'])) {
                 $sentenceSQL="DELETE from book where ISBN=".$isbnBook;
                 $registers = $connexion->query($sentenceSQL);
 
-                header("Location: Index.php");
+                header("Location: index.php");
             }
         ?>
     </div>

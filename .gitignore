@@ -3,4 +3,4 @@
 fonts/
 mix-manifest.json
 node_modules/
-/datos_conexion.inc
+/vendor

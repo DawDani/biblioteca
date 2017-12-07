@@ -2,7 +2,7 @@
 <?php
     include ("datos_conexion.inc");
     //connecting to BD
-    $connexion = new mysqli ($mysql_server,$mysql_login,$mysql_pass,"library_db");
+    $connexion = new mysqli ($mysql_server,DB_USER,DB_PASS,"library_db");
     if ($connexion->connect_errno) {
         echo "Failed to connect to MySQL: " . $mysqli->connect_error;
         die();
@@ -22,7 +22,7 @@
     if($password===$password2){
         $registers = $connexion->query($SentenceSQL);
         //Makes the register
-        header("Location: Index.php");
+        header("Location: index.php");
     }else{
         echo "WRONG";
     }

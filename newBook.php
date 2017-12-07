@@ -12,7 +12,7 @@
     $destino="img/covers/".$nameCover;
     move_uploaded_file($tmp, $destino);
     include ("datos_conexion.inc");
-    $connexion = new mysqli ($mysql_server,$mysql_login,$mysql_pass,"library_db");
+    $connexion = new mysqli ($mysql_server,DB_USER,DB_PASS,"library_db");
     $connexion->set_charset('UTF8');
     if ($connexion->connect_errno) {
         echo "Failed to connect to MySQL: " . $mysqli->connect_error;

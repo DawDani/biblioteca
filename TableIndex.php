@@ -1,8 +1,5 @@
 <?php
-
-const MYSQLSERVER = 'localhost';
-const MYSQLLOGIN = 'root';
-const MYSQLPASS = '';
+require_once "datos_conexion.inc";
 
 class table
 {
@@ -34,7 +31,7 @@ class table
     private function connectDB($dbName)
     {
         // conectamos a la BD
-        $this->mysqli = new mysqli (MYSQLSERVER, MYSQLLOGIN, MYSQLPASS, $dbName);
+        $this->mysqli = new mysqli (DB_HOST, DB_USER, DB_PASS, $dbName);
         $this->mysqli->set_charset('UTF8');
         if ($this->mysqli->connect_errno)
             echo "Failed to connect to MySQL: " . $this->mysqli->connect_error;

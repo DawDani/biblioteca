@@ -7,7 +7,7 @@ if (session_status() == PHP_SESSION_NONE) {
 if (!isset($_SESSION['name']) || empty($_SESSION['name'])) {
     session_destroy();
     session_unset();
-    header("Location: Index.php");
+    header("Location: index.php");
 } else {
     $user = 'Hola ' . $_SESSION['name'];
     $admin= $_SESSION['admin'];
@@ -80,7 +80,7 @@ if (!isset($_SESSION['name']) || empty($_SESSION['name'])) {
 
 
     <br/>
-    <a href="ManageBooks.php">Go back</a>
+    <a href="manageBooks.php">Go back</a>
     <br/>
     <br/>
 

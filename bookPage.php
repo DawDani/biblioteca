@@ -43,79 +43,7 @@ while ($row = $registers->fetch_assoc()) {
     <?php include_once "partials/headData.html"; ?>
 </head>
 <body>
-<!-- --------------------------- BODY ----------------------------------- -->
-<div>
-    <h1><a href="index.php" style="text-decoration: none;"><img alt="logo" src="img/logo.jpg" width="135px"/>Library</a></h1>
-</div>
-
-<!-- --------------------------- MENU ----------------------------------- -->
-<ul class="nav justify-content-end">
-    <?php
-    if ($user == '') {
-        echo <<<CODE
-                <li class="nav-item">
-                     <a class="nav-link active" href="logIn.php">Log In</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="register.php">Register</a>
-                </li>
-CODE;
-    } elseif ($admin == 1) { //Si es admin lvl 1 (bibliotecario/a) solo puede gestionar libros
-        echo <<<CODE
-               <li class="nav-item">
-                     <a class="nav-link active" href="logOut.php">Log Out</a>
-                </li>
-                
-                <li class="nav-item">
-                    <a class="nav-link" href="manageBooks.php">Manage Books</a>
-                </li>
-        
-CODE;
-    } elseif ($admin == 2) {
-        echo <<<CODE
-                
-               <li class="nav-item">
-                     <a class="nav-link active" href="logOut.php">Log Out</a>
-                </li>
-                
-                <li class="nav-item">
-                    <a class="nav-link" href="manageBooks.php">Manage Books</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="manageUsers.php">Manage Users</a>
-                </li>
-                
-CODE;
-    } else {
-        echo <<<CODE
-            <li class="nav-item">
-                <a class="nav-link active" href="logOut.php">Log Out</a>
-            </li>
-CODE;
-    }
-    ?>
-    <li class="nav-item">
-        <form class="form-inline" action="searchResult.php">
-            <input type="text" class="form-control" name="search" placeholder="Search by title">
-            <input type="submit" class="btn btn-primary" value="Search">
-        </form>
-    </li>
-    <li class="nav-item">
-        <div class="dropdown">
-            <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                Categories
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="searchResult.php">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-        </div>
-    </li>
-</ul>
-<!-- --------------------------- BOOK PAGE ----------------------------------- -->
-
+<?php include_once "partials/header.php" ?>
 <div class="container" id="app">
     <br/>
     <h2><?php echo $titleBook ?></h2>
@@ -160,9 +88,7 @@ CODE;
 
     <!-- Modal -->
     <div class="modal fade" id="bookingModal" tabindex="-1" role="dialog">
-        <booking-modal :lockDays="20">
-
-        </booking-modal>
+        <booking-modal :lock-days="20"></booking-modal>
     </div>
     <br/>
     <br/>

@@ -20,29 +20,28 @@ if (!isset($_SESSION['name']) || empty($_SESSION['name'])) {
 <body>
 <div class="container" style="text-align: center">
     <h1 >Add a copy</h1>
-    </br>
+    <br/>
     <form method="post">
         <input type="number" id="condition" name="condition" placeholder="Condition" />
         <input type="submit" class="btn btn-success" id="apply" name="apply" value="Create"/>
-        </br>
+        <br/>
         <a role="button" class="btn btn-danger" href="manageBooks.php">Cancel</a>
     </form>
     <?php
-    $isbnBook;
     if(isset($_GET["isbn"])) {
         $isbnBook = $_GET["isbn"];
     }
     if(isset($_POST["apply"])){
         include ("datos_conexion.inc");
         //connecting to BD
-        $connexion = new mysqli ($mysql_server,DB_USER,DB_PASS,"library_db");
+        $connexion = new mysqli (DB_HOST,DB_USER,DB_PASS,"library_db");
         if ($connexion->connect_errno) {
-            echo "Failed to connect to MySQL: " . $mysqli->connect_error;
+            echo "Failed to connect to MySQL: " . $connexion->connect_error;
             die();
         }
-        $sentenceSQL="INSERT INTO `copy` (`id`,`ISBN_FK`,`BookCondition`) VALUES (NULL,'".$isbnBook."',".$_POST["condition"].")";
+        $sentenceSQL="INSERT INTO `copy` (`id`,`ISBN_FK`,`BookCondition`) VALUES (NULL,'$isbnBook',".$_POST['condition'].")";
         $registers = $connexion->query($sentenceSQL);
-        header("Location: bookPage.php?isbn=".$isbnBook);
+        header("Location: /bookPage.php?isbn=".$isbnBook);
     }
     ?>
 </div>

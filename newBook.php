@@ -12,16 +12,15 @@
     $destino="img/covers/".$nameCover;
     move_uploaded_file($tmp, $destino);
     include ("datos_conexion.inc");
-    $connexion = new mysqli ($mysql_server,DB_USER,DB_PASS,"library_db");
+    $connexion = new mysqli (DB_HOST,DB_USER,DB_PASS,"library_db");
     $connexion->set_charset('UTF8');
     if ($connexion->connect_errno) {
-        echo "Failed to connect to MySQL: " . $mysqli->connect_error;
+        echo "Failed to connect to MySQL: " . $connexion->connect_error;
         die();
     }
     $sentenceSQL="INSERT INTO book VALUES ($isbn,'$title','$editorial','$description','$category',$editionYear,'$nameCover','$author')";
     $registers = $connexion->query($sentenceSQL);
     $sentenceSQL="INSERT INTO copy (ISBN_FK,BookCondition) VALUES ($isbn,5)";
     $registers = $connexion->query($sentenceSQL);
-    header("Location: ManageBooks.php");
-
+    header("Location: manageBooks.php");
 ?>

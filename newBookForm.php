@@ -16,13 +16,7 @@ if (!isset($_SESSION['name']) || empty($_SESSION['name'])) {
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Biblioteca Index</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <?php include_once "partials/headData.html"; ?>
 </head>
 <body>
 <div class="container">
@@ -30,28 +24,28 @@ if (!isset($_SESSION['name']) || empty($_SESSION['name'])) {
     <form enctype="multipart/form-data" action="newBook.php" method="post">
         <div class="row">
             <div class="col-md-6 mb-3">
-                <label class="form-control-label" for="formGroupExampleInput">Book's title</label>
+                <label class="form-control-label" for="formTitle">Book's title</label>
                 <input type="text" class="form-control" id="formTitle" name="formTitle" required="required">
             </div>
             <div class="col-md-6 mb-3">
-                <label class="form-control-label" for="formGroupExampleInput">ISBN</label>
+                <label class="form-control-label" for="formISBN">ISBN</label>
                 <input type="text" class="form-control" id="formISBN" name="formISBN" required="required">
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" for="formGroupExampleInput">Editorial</label>
+            <label class="form-control-label" for="formEditorial">Editorial</label>
             <input type="text" class="form-control" id="formEditorial" name="formEditorial" required="required">
         </div>
         <div class="form-group">
-            <label class="form-control-label" for="formGroupExampleInput">Edition Year</label>
+            <label class="form-control-label" for="formYear">Edition Year</label>
             <input type="number" class="form-control" id="formYear" name="formYear" required="required" min="0" max="9999">
         </div>
         <div class="form-group">
-            <label class="form-control-label" for="formGroupExampleInput">Author</label>
+            <label class="form-control-label" for="formAuthor">Author</label>
             <input type="text" class="form-control" id="formAuthor" name="formAuthor" required="required">
         </div>
         <div class="form-group">
-            <label for="exampleFormControlSelect1">Category</label>
+            <label for="formCategory">Category</label>
             <select class="form-control" id="formCategory" name="formCategory" required="required">
                 <option>Science fiction</option>
                 <option>Drama</option>
@@ -67,7 +61,7 @@ if (!isset($_SESSION['name']) || empty($_SESSION['name'])) {
             </select>
         </div>
         <div class="form-group">
-            <label for="exampleFormControlTextarea1">Book's description</label>
+            <label for="formDesc">Book's description</label>
             <textarea class="form-control" id="formDesc" name="formDesc" rows="3" required="required"></textarea>
         </div>
 
@@ -84,7 +78,6 @@ if (!isset($_SESSION['name']) || empty($_SESSION['name'])) {
     <br/>
     <br/>
 
-    <!-- FOOOOOOOOOOOOOOOOTER -->
     <hr/>
     <footer>
         <p>Made by: Daniel Muñoz</p>

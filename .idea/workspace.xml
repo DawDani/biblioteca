@@ -4,16 +4,8 @@
     <bookmark url="file://$PROJECT_DIR$/js/components/booking-modal.vue" line="20" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0420572b-4292-466c-9af5-b336bf4becec" name="Default" comment="datepicker &amp; compiler">
-      <change beforePath="" afterPath="$PROJECT_DIR$/reserveProcess.php" />
-      <change beforePath="$PROJECT_DIR$/.idea/Biblioteca prototipo.iml" afterPath="$PROJECT_DIR$/.idea/Biblioteca prototipo.iml" />
+    <list default="true" id="0420572b-4292-466c-9af5-b336bf4becec" name="Default" comment="blocked">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/bookPage.php" afterPath="$PROJECT_DIR$/bookPage.php" />
-      <change beforePath="$PROJECT_DIR$/datos_conexion.inc" afterPath="$PROJECT_DIR$/datos_conexion.inc" />
-      <change beforePath="$PROJECT_DIR$/img/covers/1507-1.jpg" afterPath="$PROJECT_DIR$/img/covers/1507-1.jpg" />
-      <change beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
-      <change beforePath="$PROJECT_DIR$/js/components/booking-modal.vue" afterPath="$PROJECT_DIR$/js/components/booking-modal.vue" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" afterPath="$PROJECT_DIR$/public/js/app.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,7 +14,8 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings">
+  <component name="ComposerSettings" synchronizationState="DONT_SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <executablePath>composer</executablePath>
   </component>
   <component name="FileEditorManager">
@@ -329,7 +322,7 @@
       <workItem from="1512675230871" duration="8041000" />
       <workItem from="1512831074597" duration="612000" />
       <workItem from="1512832568501" duration="2510000" />
-      <workItem from="1512854801296" duration="4359000" />
+      <workItem from="1512854801296" duration="4541000" />
     </task>
     <task id="LOCAL-00001" summary="datepicker &amp; compiler">
       <created>1512514700693</created>
@@ -338,11 +331,18 @@
       <option name="project" value="LOCAL" />
       <updated>1512514700693</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="blocked">
+      <created>1512860412462</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1512860412462</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52222000" />
+    <option name="totallyTimeSpent" value="52404000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1" y="4" width="1680" height="1020" extended-state="6" />
@@ -351,13 +351,13 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14871481" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18863636" sideWeight="0.50244796" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18863636" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18863636" sideWeight="0.497552" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -378,7 +378,8 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <MESSAGE value="datepicker &amp; compiler" />
-    <option name="LAST_COMMIT_MESSAGE" value="datepicker &amp; compiler" />
+    <MESSAGE value="blocked" />
+    <option name="LAST_COMMIT_MESSAGE" value="blocked" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />

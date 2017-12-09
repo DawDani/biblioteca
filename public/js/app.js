@@ -27942,7 +27942,7 @@ exports = module.exports = __webpack_require__(13)(undefined);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -28435,26 +28435,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "booking-modal",
-    props: ['disabled', 'lockDays'],
+    props: ['disabled', 'lockDays', 'isbn', 'ranges'],
     data: function data() {
         return {
-            disabledDates: {
-                ranges: [{
-                    from: new Date(2017, 11, 12),
-                    to: new Date(2017, 11, 21)
-                }, {
-                    from: new Date(2017, 11, 21),
-                    to: new Date(2017, 11, 26)
-                }]
-            }
+            reservationDate: new Date()
         };
     },
 
+    computed: {
+        reservationDay: function reservationDay() {
+            return this.reservationDate.toISOString().split("T")[0];
+        },
+        blocks: function blocks() {
+            if (this.ranges !== undefined) {
+                return {
+                    to: new Date(),
+                    ranges: this.ranges
+                };
+            } else {
+                return {
+                    to: new Date()
+                };
+            }
+        }
+    },
     components: {
         datepicker: __WEBPACK_IMPORTED_MODULE_0_vuejs_datepicker___default.a
     }
@@ -28503,7 +28515,14 @@ var render = function() {
                           bootstrapStyling: true,
                           "input-class": "form-control",
                           "calendar-class": "w-100",
-                          disabled: _vm.disabledDates
+                          disabled: _vm.blocks
+                        },
+                        model: {
+                          value: _vm.reservationDate,
+                          callback: function($$v) {
+                            _vm.reservationDate = $$v
+                          },
+                          expression: "reservationDate"
                         }
                       })
                     ],
@@ -28515,7 +28534,39 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _vm._m(1, false, false)
+        _c(
+          "form",
+          {
+            staticClass: "modal-footer",
+            attrs: { action: "reserveProcess.php", method: "post" }
+          },
+          [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-secondary",
+                attrs: { type: "button", "data-dismiss": "modal" }
+              },
+              [_vm._v("Close")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+              [_vm._v("Save")]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              attrs: { type: "hidden", name: "reservationDay" },
+              domProps: { value: _vm.reservationDay }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              attrs: { type: "hidden", name: "isbn" },
+              domProps: { value: _vm.isbn }
+            })
+          ]
+        )
       ])
     ]
   )
@@ -28541,27 +28592,6 @@ var staticRenderFns = [
           }
         },
         [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-secondary",
-          attrs: { type: "button", "data-dismiss": "modal" }
-        },
-        [_vm._v("Close")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "button" } },
-        [_vm._v("Save")]
       )
     ])
   }

@@ -122,7 +122,7 @@ CODE;
             // files where to jump to Browse, Edit, Delete the selected row.
             // id given as GET in link is first given field.
 
-            $fileBrowse = "BookPage.php";
+            $fileBrowse = "bookPage.php";
             $fileUpdate = "editCopy.php";
             $fileDelete = "deleteCopy.php";
 

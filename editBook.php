@@ -128,7 +128,7 @@ while ($row = $registers->fetch_assoc()){
             $sentenceSQL = "UPDATE book SET ISBN='" . $isbnew . "', Title='" . $title . "', Editorial='" . $editorial . "', Description='" . $description . "', Category='" . $category . "', EditionYear=" . $editionYear . ",Cover='" . $nameCover . "',  Author='" . $author . "' where ISBN=" . $isbn;
         }
         $registers = $connexion->query($sentenceSQL);
-        echo "<script> location.href='BookPage.php?isbn=$isbn'</script>";
+        echo "<script> location.href='bookPage.php?isbn=$isbn'</script>";
     }
     ?>
     <br/>

@@ -42,7 +42,7 @@ if (!isset($_SESSION['name']) || empty($_SESSION['name'])) {
         }
         $sentenceSQL="INSERT INTO `copy` (`id`,`ISBN_FK`,`BookCondition`) VALUES (NULL,'".$isbnBook."',".$_POST["condition"].")";
         $registers = $connexion->query($sentenceSQL);
-        header("Location: BookPage.php?isbn=".$isbnBook);
+        header("Location: bookPage.php?isbn=".$isbnBook);
     }
     ?>
 </div>

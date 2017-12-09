@@ -38,7 +38,7 @@
 
     export default {
         name: "booking-modal",
-        props: ['disabled'],
+        props: ['disabled','lockDays'],
         data() {
             return {
                 disabledDates: {

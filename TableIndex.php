@@ -87,7 +87,7 @@ class table
                     <img class=\"card-img-top\" src=\"./img/covers/".$cover."\" alt=\"Card image cap\">
                     <div class=\"card-body\">
                         <h4 class=\"card-title\">".$bookTitle."</h4>
-                        <a href=\"BookPage.php?isbn=".$bookISBN."\" class=\"btn btn-primary\">More info</a>
+                        <a href=\"bookPage.php?isbn=".$bookISBN."\" class=\"btn btn-primary\">More info</a>
                     </div>
                 </div>
                </div>";

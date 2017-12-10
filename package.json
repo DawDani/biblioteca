@@ -15,10 +15,12 @@
     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "dependencies": {
+    "axios": "^0.17.1",
     "bootstrap": "4.0.0-beta.2",
     "font-awesome": "^4.7.0",
     "jquery": "^3.2.1",
     "laravel-mix": "^1.6.2",
+    "moment": "^2.19.3",
     "popper.js": "^1.12.9",
     "vuejs": "^2.0.7",
     "vuejs-datepicker": "^0.9.21"

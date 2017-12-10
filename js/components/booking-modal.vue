@@ -14,11 +14,11 @@
                             <div class="form-group">
                                 <label for="picker">Date</label>
                                 <datepicker id="picker"
-                                            v-model="reservationDate"
+                                            v-model="ranges.max"
                                             :bootstrapStyling="true"
                                             :input-class="'form-control'"
                                             :calendar-class="'w-100'"
-                                            :disabled="blocks"
+                                            :disabled="ranges"
                                 >
                                 </datepicker>
                             </div>
@@ -41,9 +41,13 @@
 
     export default {
         name: "booking-modal",
-        props: ['disabled', 'lockDays', 'isbn', 'ranges'],
+        props: ['lockDays', 'isbn'],
         data() {
             return {
+                ranges: {
+                    to: new Date(),
+                    max: new Date(),
+                },
                 reservationDate: new Date()
             }
         },
@@ -51,21 +55,38 @@
             reservationDay: function () {
                 return this.reservationDate.toISOString().split("T")[0];
             },
-            blocks: function () {
-                if (this.ranges !== undefined) {
-                    return {
-                        to: new Date(),
-                        ranges: this.ranges,
-                    }
-                } else {
-                    return {
-                        to: new Date(),
-                    }
-                }
-            }
         },
         components: {
             datepicker
+        },
+        mounted: function () {
+            axios.get('/actions/getBlockedDates.php', {
+                params: {
+                    isbn: this.isbn
+                }
+            }).then(response => {
+                if (response.data.needBlock) {
+                    let blocks = {
+                        to: new Date(),
+                        ranges: []
+                    };
+                    let max = new Date();
+                    response.data.ranges.forEach(function (e, i) {
+                        if (new Date(e.to) > max) {
+                            let asd = new Date(e.to);
+                            max.setDate(asd.getDate() + 1)
+                        }
+                        blocks.ranges.push({
+                            from: moment(e.from).add(1, 'days').toDate(),
+                            to: moment(e.to).add(1, 'days').toDate(),
+                        })
+                    });
+                    blocks.max = max;
+                    this.ranges = blocks;
+                }
+            }).catch(error => {
+                console.error(error);
+            })
         }
     }
 </script>

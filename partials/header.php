@@ -24,6 +24,9 @@
                 <?php
             } elseif ($admin == 1) { //Si es admin lvl 1 (bibliotecario/a) solo puede gestionar libros ?>
                 <li class="nav-item">
+                    <span class="nav-link nav-text"><?= $_SESSION['name'] ?></span>
+                </li>
+                <li class="nav-item mr-3">
                     <a class="nav-link" href="/logOut.php">Log Out</a>
                 </li>
                 <li class="nav-item">
@@ -32,6 +35,9 @@
                 <?php
             } elseif ($admin == 2) { //si es admin lvl 2 (admin) puede gestionar también a los usuarios ?>
                 <li class="nav-item">
+                    <span class="nav-link nav-text"><?= $_SESSION['name'] ?></span>
+                </li>
+                <li class="nav-item mr-3">
                     <a class="nav-link" href="/logOut.php">Log Out</a>
                 </li>
                 <li class="nav-item">
@@ -43,7 +49,10 @@
                 <?php
             } else { ?>
                 <li class="nav-item">
-                    <a class="nav-link active" href="logOut.php">Log Out</a>
+                    <a class="nav-link" href="javascript:void(0)"><?= $_SESSION['name'] ?></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="logOut.php">Log Out</a>
                 </li>
                 <?php
             }

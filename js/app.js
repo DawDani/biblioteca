@@ -6,6 +6,8 @@ try {
 } catch (e) {}
 
 window.Vue = require('vue');
+window.axios = require('axios');
+window.moment = require('moment');
 
 import bookingModal from './components/booking-modal.vue';
 

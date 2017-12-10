@@ -25,45 +25,13 @@ if (isset($_GET["isbn"])) {
 }
 $sentenceSQL = "SELECT Title,Editorial,Description,Category,ISBN,Cover FROM `book` WHERE ISBN=" . $isbn;
 $registers = $connexion->query($sentenceSQL);
-while ($row = $registers->fetch_assoc()) {
+if ($row = $registers->fetch_assoc()) {
     $titleBook = $row['Title'];
     $editorialBook = $row['Editorial'];
     $descriptionBook = $row['Description'];
     $categoryBook = $row['Category'];
     $isbnBook = $row['ISBN'];
     $coverBook = $row['Cover'];
-}
-$sentenceSQL =<<<CODE
-    SELECT
-      !(count( id ) <> ( select count( copy.id ) FROM `copy`where`copy`.`ISBN_FK` = '$isbn' )) AS needsBlock
-    FROM `reserved_copy`
-    WHERE `reserved_copy`.`CopyId`IN
-    (
-        SELECT
-          id
-        FROM `copy`
-        WHERE `copy`.`ISBN_FK` = '$isbn'
-    )
-    AND active = 1
-CODE;
-
-$registers = $connexion->query($sentenceSQL);
-if ($row = $registers->fetch_assoc()) {
-    $needsBlock = $row['needsBlock'];
-}
-
-if($needsBlock){
-    $sentenceSQL="SELECT ReservationDay, ReturnDay FROM reserved_copy WHERE CopyId IN (SELECT id FROM copy WHERE ISBN_FK='$isbn') AND active=1";
-    $registers = $connexion->query($sentenceSQL);
-    $ranges;
-    while ($row = $registers->fetch_assoc()) {
-        $asd=[];
-        $asd[] = $row['ReservationDay'];
-        $asd[] = $row['ReturnDay'];
-        $ranges[]=$asd;
-    }
-    var_dump(json_encode($ranges));
-    exit();
 }
 
 ?>
@@ -72,6 +40,7 @@ if($needsBlock){
 <html>
 <head>
     <?php include_once "partials/headData.html"; ?>
+
 </head>
 <body>
 <?php include_once "partials/header.php" ?>
@@ -121,7 +90,6 @@ CODE;
     <div class="modal fade" id="bookingModal" tabindex="-1" role="dialog">
         <booking-modal :lock-days="20"
                        :isbn="'<?php echo $isbn ?>'"
-                       :ranges="[{from:new Date(2017,11,20),to:new Date(2017,11,25)},{from:new Date(2017,11,21),to:new Date(2017,11,26)}]"
         >
         </booking-modal>
     </div>

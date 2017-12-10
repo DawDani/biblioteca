@@ -12772,3 +12772,7 @@ a.text-dark:hover {
   clip: auto;
 }
 
+.nav-text:hover {
+  color: rgba(0, 0, 0, 0.5) !important;
+}
+

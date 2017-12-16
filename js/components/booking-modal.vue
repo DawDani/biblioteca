@@ -53,7 +53,7 @@
         },
         computed: {
             reservationDay: function () {
-                return this.reservationDate.toISOString().split("T")[0];
+                return this.ranges.max.toISOString().split("T")[0];
             },
         },
         components: {

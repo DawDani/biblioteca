@@ -46244,7 +46244,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     computed: {
         reservationDay: function reservationDay() {
-            return this.reservationDate.toISOString().split("T")[0];
+            return this.ranges.max.toISOString().split("T")[0];
         }
     },
     components: {

@@ -1,5 +1,17 @@
 <?php
-$LIMITE="20"; // numero días permitido que dure la reserva
+$user = "";
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+if (!isset($_SESSION['name']) || empty($_SESSION['name'])) {
+    session_destroy();
+    session_unset();
+    header("Location: index.php");
+} else {
+    $user = 'Hola ' . $_SESSION['name'];
+    $admin = $_SESSION['admin'];
+}
+const LIMIT = 20; // numero días permitido que dure la reserva
 require_once "datos_conexion.inc";
 $resDay = $_POST['reservationDay'];
 //connecting to BD
@@ -33,11 +45,9 @@ $registers = $connexion->query($sentenceSQL);
 if ($row = $registers->fetch_assoc()) {
     $needsBlock = $row['needsBlock'];
 }
-
-$dateReserved=$_POST['reservationDay'];
-$dateReservedEnd=(new \DateTime($dateReserved))->add(new DateInterval('P'.$LIMITE.'D'))->format('Y-m-d');
-$userThatReserved=$_SESSION['id'];
-
+$dateReserved = $_POST['reservationDay'];
+$dateReservedEnd = (new \DateTime($dateReserved))->add(new DateInterval('P' . LIMIT . 'D'))->format('Y-m-d');
+$userThatReserved = $_SESSION['id'];
 $sentenceSQL = <<<CODE
 INSERT INTO reserved_copy VALUES
 (NULL,

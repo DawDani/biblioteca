@@ -23,9 +23,7 @@ if (isset($_GET["search"])) {
     ?>
 </head>
 <body>
-<?php
-include_once "partials/headData.html";
-?>
+<?php include_once "partials/header.php"; ?>
 <h2>Search Result</h2>
 <!-- --------------------------- TABLE ----------------------------------- -->
 <br/>

@@ -24,6 +24,7 @@
             session_start();
             $_SESSION['name']=$UserName;
             $_SESSION['admin']=$UserAdmin;
+            $_SESSION['id']=$UserId;
             header("Location: index.php");
         }else{
             header("Location: logIn.php");

@@ -14,7 +14,7 @@ if (!isset($_SESSION['name']) || empty($_SESSION['name'])) {
 ?>
 <html>
     <head>
-        <?php include_once "/partials/headData.html"; ?>
+        <?php include_once "partials/headData.html"; ?>
     </head>
     <body>
     <div class="container" style="text-align: center">

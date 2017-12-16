@@ -8,7 +8,7 @@ if (!isset($_SESSION['name']) || empty($_SESSION['name'])) {
     session_destroy();
     session_unset();
 } else {
-    $user = 'You are logged as ' . $_SESSION['name'];
+    $user = $_SESSION['name'];
     $admin= $_SESSION['admin'];
 }
 ?>
@@ -25,9 +25,7 @@ if (!isset($_SESSION['name']) || empty($_SESSION['name'])) {
     <?php include_once "partials/header.php"; ?>
 <!-- --------------------------- TABLA ----------------------------------- -->
 <div class="container">
-    <?php
-    echo "<p>".$user."</p>";
-    ?>
+
     <h2>Books available</h2>
 
             <?php

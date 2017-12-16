@@ -1,4 +1,5 @@
 <?php
+$LIMITE="20"; // numero días permitido que dure la reserva
 require_once "datos_conexion.inc";
 $resDay = $_POST['reservationDay'];
 //connecting to BD
@@ -14,7 +15,7 @@ if (isset($_POST["isbn"])) {
 }
 
 
-$sentenceSQL =<<<CODE
+$sentenceSQL = <<<CODE
     SELECT
       !(count( id ) <> ( select count( copy.id ) FROM `copy`where`copy`.`ISBN_FK` = '$isbn' )) AS needsBlock
     FROM `reserved_copy`
@@ -30,12 +31,29 @@ CODE;
 
 $registers = $connexion->query($sentenceSQL);
 if ($row = $registers->fetch_assoc()) {
-
     $needsBlock = $row['needsBlock'];
 }
 
-if($needsBlock){
-    echo "block";
-}else{
-    echo "free";
-}
+$dateReserved=$_POST['reservationDay'];
+$dateReservedEnd=(new \DateTime($dateReserved))->add(new DateInterval('P'.$LIMITE.'D'))->format('Y-m-d');
+$userThatReserved=$_SESSION['id'];
+
+$sentenceSQL = <<<CODE
+INSERT INTO reserved_copy VALUES
+(NULL,
+(SELECT c.id
+        FROM copy c
+        WHERE ISBN_FK = $isbn
+        AND id NOT IN ( SELECT r.CopyId
+                        FROM reserved_copy r
+                        WHERE active = 1)
+        ORDER BY c.BookCondition DESC LIMIT 1
+)
+, '$dateReserved'
+, NULL
+, '$dateReservedEnd'
+, $userThatReserved
+, 1
+)
+CODE;
+echo $sentenceSQL;

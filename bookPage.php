@@ -13,7 +13,7 @@ if (!isset($_SESSION['name']) || empty($_SESSION['name'])) {
 
 include("datos_conexion.inc");
 //connecting to BD
-$connexion = new mysqli ($mysql_server, DB_USER, DB_PASS, "library_db");
+$connexion = new mysqli (DB_HOST, DB_USER, DB_PASS, "library_db");
 $connexion->set_charset('UTF8');
 if ($connexion->connect_errno) {
     echo "Failed to connect to MySQL: " . $connexion->connect_error;

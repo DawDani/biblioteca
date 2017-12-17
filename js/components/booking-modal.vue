@@ -28,7 +28,7 @@
             </div>
             <form class="modal-footer" action="reserveProcess.php" method="post">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-primary">Reserve</button>
                 <input type="hidden" name="reservationDay" :value="reservationDay">
                 <input type="hidden" name="isbn" :value="isbn">
             </form>

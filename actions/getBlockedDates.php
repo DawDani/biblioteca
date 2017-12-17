@@ -12,7 +12,7 @@ if (isset($_GET["isbn"])) {
 }
 $sentenceSQL =<<<CODE
     SELECT
-      !(count( id ) <> ( select count( copy.id ) FROM `copy`where`copy`.`ISBN_FK` = '$isbn' )) AS needsBlock
+      !(count( id ) < ( select count( copy.id ) FROM `copy`where`copy`.`ISBN_FK` = '$isbn' )) AS needsBlock
     FROM `reserved_copy`
     WHERE `reserved_copy`.`CopyId`IN
     (
@@ -32,12 +32,12 @@ if ($row = $registers->fetch_assoc()) {
 if($needsBlock){
     $sentenceSQL="SELECT ReservationDay, ReturnDay FROM reserved_copy WHERE CopyId IN (SELECT id FROM copy WHERE ISBN_FK='$isbn') AND active=1";
     $registers = $connexion->query($sentenceSQL);
-    $ranges;
+    $ranges=[];
     while ($row = $registers->fetch_assoc()) {
-        $asd;
+        $asd=(object)[];
         $asd->from = $row['ReservationDay'];
         $asd->to = $row['ReturnDay'];
-        $ranges[]=$asd;
+        array_push($ranges,$asd);
     }
     $asdf->ranges = $ranges;
     $asdf->needBlock = true;

@@ -30,7 +30,10 @@
                     <a class="nav-link" href="/logOut.php">Log Out</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/manageBooks.php">Manage Books</a>
+                    <a class="nav-link" href="/manageBooks.php">Manage Copies</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/manageReservations.php">Manage Reservations</a>
                 </li>
                 <?php
             } elseif ($admin == 2) { //si es admin lvl 2 (admin) puede gestionar también a los usuarios ?>
@@ -41,10 +44,13 @@
                     <a class="nav-link" href="/logOut.php">Log Out</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/manageBooks.php">Manage Books</a>
+                    <a class="nav-link" href="/manageBooks.php">Manage Copies</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/manageUsers.php">Manage Users</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/manageReservations.php">Manage Reservations</a>
                 </li>
                 <?php
             } else { ?>

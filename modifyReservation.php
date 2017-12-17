@@ -18,13 +18,12 @@ if (!isset($_SESSION['name']) || empty($_SESSION['name'])) {
     </head>
     <body>
     <div class="container" style="text-align: center">
-    <h1 >Delete a copy</h1>
+    <h1 >Modify a reservation</h1>
         <br/>
-        <p>Are you sure to delete this copy?</p>
+        <p>Are you sure activate / deactivate this reservation?</p>
         <form method="post">
             <input type="submit" class="btn btn-success" id="yes" name="yes" value="Yes"/>
-
-            <a role="button" class="btn btn-danger" href="manageBooks.php">No</a>
+            <a role="button" class="btn btn-danger" href="manageReservations.php">No</a>
         </form>
         <?php
             if(isset($_GET["id"])) {
@@ -38,9 +37,9 @@ if (!isset($_SESSION['name']) || empty($_SESSION['name'])) {
                     echo "Failed to connect to MySQL: " . $connexion->connect_error;
                     die();
                 }
-                $sentenceSQL="DELETE from copy where id=".$id_copy;
+                $sentenceSQL="Update reserved_copy set active = not active where Id=".$id_copy;
                 $registers = $connexion->query($sentenceSQL);
-                header("Location: ManageBooks.php");
+                header("Location: manageReservations.php");
             }
         ?>
     </div>

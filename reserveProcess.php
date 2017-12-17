@@ -56,7 +56,7 @@ INSERT INTO reserved_copy VALUES
         WHERE ISBN_FK = $isbn
         AND id NOT IN ( SELECT r.CopyId
                         FROM reserved_copy r
-                        WHERE active = 1)
+                        WHERE active = 1 AND r.ReturnDay >'$dateReserved')
         ORDER BY c.BookCondition DESC LIMIT 1
 )
 , '$dateReserved'
@@ -67,3 +67,7 @@ INSERT INTO reserved_copy VALUES
 )
 CODE;
 echo $sentenceSQL;
+$registers = $connexion->query($sentenceSQL); //inserta la nueva reserva
+if($registers){
+    echo "<h1>Reservation successful</h1><a href='index.php'>Go back</a>";
+}

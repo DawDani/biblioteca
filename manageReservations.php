@@ -12,7 +12,8 @@ if (!isset($_SESSION['name']) || empty($_SESSION['name'])) {
     $user = 'Hola ' . $_SESSION['name'];
     $admin = $_SESSION['admin'];
 }
-if ($_SESSION['admin'] === "0") {
+
+if ($_SESSION['admin'] === "0" || $_SESSION['admin'] === "1") {
     header("Location: index.php");
 }
 ?>
@@ -22,38 +23,39 @@ if ($_SESSION['admin'] === "0") {
     <?php include_once "partials/headData.html"; ?>
 </head>
 <body>
-<?php include_once "partials/header.php"; ?>
+<?php
+include_once "partials/header.php";
+?>
 <br/>
 <br/>
 <div>
-    <h2 style="text-align: center;">Manage Copies</h2>
+    <h2 style="text-align: center;">Manage Reservations</h2>
     <br/>
     <?php
     // preparing variables to create my Table
     $dbName = "library_db";
-    $tableName = "copy, book";
+    $tableName = "reserved_copy";
 
     // name of fields
-    $fields [] = "id";
-    $fields [] = "ISBN";
-    $fields [] = "Title";
-    $fields [] = "BookCondition";
+    $fields [] = "Id";
+    $fields [] = "CopyId";
+    $fields [] = "ReservationDay";
+    $fields [] = "ReturnDay";
+    $fields [] = "UserId";
+    $fields [] = "active";
 
     // files where to jump to Browse, Edit, Delete the selected row.
     // id given as GET in link is first given field.
-
-    $fileBrowse = "bookPage.php";
-    $fileUpdate = "editCopy.php";
-    $fileDelete = "deleteCopy.php";
+    //$fileBrowse = "browse.php";
+    $fileBrowse = "";
+    $fileUpdate = "modifyReservation.php";
+    $fileDelete = "";
 
     $t = new Table($dbName, $tableName, $fields, $fileBrowse, $fileUpdate, $fileDelete);
     $t->paintTable();
 
     // ------------------------------------------------------------------------------------
     ?>
-    <div>
-        <a href="newBookForm.php"> <img alt="new_book_icon" src="img/new_book_icon.png" width="60px"/></a>
-    </div>
     <br/>
     <br/>
     <a href="index.php">Home Page</a>

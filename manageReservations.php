@@ -13,7 +13,7 @@ if (!isset($_SESSION['name']) || empty($_SESSION['name'])) {
     $admin = $_SESSION['admin'];
 }
 
-if ($_SESSION['admin'] === "0" || $_SESSION['admin'] === "1") {
+if ($_SESSION['admin'] === "0") {
     header("Location: index.php");
 }
 ?>
